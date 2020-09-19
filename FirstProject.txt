@@ -1,0 +1,71 @@
+infrustructure
+{
+	base entity -> Guid
+}
+
+create Models
+{
+
+
+	Person
+	{
+	FullName  Requierd!
+	UserName  Requierd!
+	Password with Confirm  Requierd!
+	Email with Confirm  Requierd!	
+	}
+	
+	Ngio : person
+	{
+		phone number Requierd
+		IsNgio Bool! => true
+		Adress Requierd!
+	}
+	Admin : Person
+	{
+		Acesses Modifier IsNgio True or False!
+		Acesses Modifier To CRUD Person And Ngio!
+		Acesses Modifier To CRUD Comments!
+	}
+	Post group : base entity
+	{
+			group title
+	}
+	Post : base entity
+	{
+		group id
+		title
+		short desc
+		text
+		visit
+		Img
+		create date
+		tag
+		
+		
+	}
+	post comment  : base entity
+	{
+		post id
+		FullName
+		Email
+		comment
+		create date
+		
+	}
+}
+create Controllers
+{
+	AdminPostController
+	{
+		CRUD with post model
+	}
+	
+	AdminPostGroupController
+	{
+		CRUD with PostGroup model
+	}
+}
+create Resourses
+create Repository
+create DataBase
